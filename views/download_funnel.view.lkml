@@ -6,9 +6,20 @@ view: download_funnel {
     sql: ${TABLE}."address_set" ;;
   }
 
+  measure:  num_address_set {
+    sql: ${address_set} ;;
+    type: sum
+
+  }
+
   dimension: bank_linked {
     type: number
     sql: ${TABLE}."bank_linked" ;;
+  }
+
+  measure: num_bank_linked {
+    sql: ${bank_linked} ;;
+    type: sum
   }
 
   dimension: debitcard_link_attempted {
