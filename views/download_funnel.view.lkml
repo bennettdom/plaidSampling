@@ -138,7 +138,7 @@ view: download_funnel {
   dimension_group: birth {
     timeframes: [raw, date, month, year]
     type: time
-    sql: to_date(${stringdateofbirth}) ;;
+    sql: to_date(${stringdateofbirth}, 'YYYY-MM-DD') ;;
   }
 
   dimension: with_boost {
