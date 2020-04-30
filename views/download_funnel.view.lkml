@@ -110,7 +110,7 @@ view: download_funnel {
     sql: ${TABLE}."sign_up_date" ;;
   }
 
-  dimension_group: date {
+  dimension_group: signup {
     timeframes: [
       raw,
       date,
@@ -135,7 +135,7 @@ view: download_funnel {
     sql: ${TABLE}."stringdateofbirth" ;;
   }
 
-  dimension_group: birthdate {
+  dimension_group: birth {
     timeframes: [raw, date, month, year]
     type: time
     sql: to_date(${stringdateofbirth}) ;;
