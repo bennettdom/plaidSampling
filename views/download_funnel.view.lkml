@@ -6,10 +6,10 @@ view: download_funnel {
     sql: ${TABLE}."address_set" ;;
   }
 
-  measure:  num_address_set {
+  measure:  address {
     sql: ${address_set} ;;
     type: sum
-
+    value_format_name: decimal_0
   }
 
   dimension: bank_linked {
@@ -17,9 +17,10 @@ view: download_funnel {
     sql: ${TABLE}."bank_linked" ;;
   }
 
-  measure: num_bank_linked {
+  measure: bank_link {
     sql: ${bank_linked} ;;
     type: sum
+    value_format_name: decimal_0
   }
 
   dimension: debitcard_link_attempted {
@@ -27,9 +28,21 @@ view: download_funnel {
     sql: ${TABLE}."debitcard_link_attempted" ;;
   }
 
+  measure: debitcard_link_attempt {
+    sql: ${debitcard_link_attempted} ;;
+    type: sum
+    value_format_name: decimal_0
+  }
+
   dimension: debitcard_linked {
     type: number
     sql: ${TABLE}."debitcard_linked" ;;
+  }
+
+  measure: debitcard_link {
+    sql: ${debitcard_linked} ;;
+    type: sum
+    value_format_name: decimal_0
   }
 
   dimension: debitcard_set {
@@ -37,9 +50,21 @@ view: download_funnel {
     sql: ${TABLE}."debitcard_set" ;;
   }
 
+  measure: debitcard {
+    sql: ${debitcard_set} ;;
+    type: sum
+    value_format_name: decimal_0
+  }
+
   dimension: email_verified {
     type: number
     sql: ${TABLE}."email_verified" ;;
+  }
+
+  measure: email {
+    sql: ${email_verified} ;;
+    type: sum
+    value_format_name: decimal_0
   }
 
   dimension: isandroid {
@@ -52,9 +77,21 @@ view: download_funnel {
     sql: ${TABLE}."num_users" ;;
   }
 
+  measure: users {
+    sql: ${num_users} ;;
+    type: sum
+    value_format_name: decimal_0
+  }
+
   dimension: phone_verified {
     type: number
     sql: ${TABLE}."phone_verified" ;;
+  }
+
+  measure: phone {
+    sql: ${phone_verified} ;;
+    type: sum
+    value_format_name: decimal_0
   }
 
   dimension: prequalified {
@@ -62,9 +99,30 @@ view: download_funnel {
     sql: ${TABLE}."prequalified" ;;
   }
 
+  measure: isprequal {
+    sql: ${prequalified} ;;
+    type: sum
+    value_format_name: decimal_0
+  }
+
   dimension: sign_up_date {
     type: string
     sql: ${TABLE}."sign_up_date" ;;
+  }
+
+  dimension_group: date {
+    timeframes: [
+      raw,
+      date,
+      month,
+      year,
+      week,
+      week_of_year,
+      day_of_week
+    ]
+    type: time
+    sql: to_date(${sign_up_date},'YYYY-MM-DD') ;;
+
   }
 
   dimension: state {
@@ -77,9 +135,20 @@ view: download_funnel {
     sql: ${TABLE}."stringdateofbirth" ;;
   }
 
+  dimension_group: birthdate {
+    timeframes: [raw, date, month, year]
+    type: time
+    sql: to_date(${stringdateofbirth}) ;;
+  }
+
   dimension: with_boost {
     type: number
     sql: ${TABLE}."with_boost" ;;
+  }
+
+  measure: boost {
+    sql: ${with_boost} ;;
+    type: sum
   }
 
   dimension: zip {
