@@ -105,7 +105,38 @@ view: download_funnel {
     value_format_name: decimal_0
   }
 
+#   parameter: funnel_step {
+#     type: string
+#     allowed_value: {
+#       label: "Debit Card"
+#       value: "debit card"
+#     }
+#     allowed_value: {
+#       label: "Prequalified"
+#       value: "prequalified"
+#     }
+#     allowed_value: {
+#       label: "Bank Linked"
+#       value: "bank linked"
+#     }
+#   }
+#
+#   measure: percentage_of_funnel {
+#     label_from_parameter: funnel_step
+#     type: number
+#     value_format_name: percent_2
+#     sql:
+#     CASE
+#       WHEN {% parameter funnel_step%} = 'debit card' THEN 1.0*${debitcard}/${count}
+#       WHEN {% parameter funnel_step%} = 'prequalified' THEN 1.0*${isprequal}/${count}
+#       WHEN {% parameter funnel_step%} = 'bank linked' THEN 1.0*${bank_link}/${count}
+#     END;;
+#
+#   }
+
+
   dimension: sign_up_date {
+    hidden: yes
     type: string
     sql: ${TABLE}."sign_up_date" ;;
   }
@@ -122,7 +153,12 @@ view: download_funnel {
     ]
     type: time
     sql: to_date(${sign_up_date},'YYYY-MM-DD') ;;
+  }
 
+
+  dimension: months_since_signup {
+    type: number
+    sql: EXTRACT(MONTH FROM AGE(current_date,${sign_up_date}::timestamp)) ;;
   }
 
   dimension: state {
@@ -132,6 +168,7 @@ view: download_funnel {
   }
 
   dimension: stringdateofbirth {
+    hidden: yes
     type: string
     sql: ${TABLE}."stringdateofbirth" ;;
   }
