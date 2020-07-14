@@ -321,7 +321,7 @@ view: download_funnel {
 
   dimension: actives_90 {
     type: number
-    sql: ${TABLE}."actives_1" ;;
+    sql: ${TABLE}."actives_90" ;;
   }
 
   measure: 90_dy_act {
