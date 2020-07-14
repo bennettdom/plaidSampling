@@ -266,6 +266,70 @@ view: download_funnel {
     sql: ${total_receipts} ;;
   }
 
+  dimension: has_scanned_receipt {
+    label: "Rcpt Scnr"
+    type: yesno
+    sql: ${TABLE}."has_scanned_receipt" ;;
+  }
+
+  dimension: actives_1 {
+    type: number
+    sql: ${TABLE}."actives_1" ;;
+  }
+
+  measure: 1_dy_act {
+    label: "1 Dy"
+    type: sum
+    sql: ${actives_1} ;;
+  }
+
+
+  dimension: actives_7 {
+    type: number
+    sql: ${TABLE}."actives_7" ;;
+  }
+
+  measure: 7_dy_act {
+    label: "7 Dy"
+    type: sum
+    sql: ${actives_7} ;;
+  }
+
+
+  dimension: actives_30 {
+    type: number
+    sql: ${TABLE}."actives_30" ;;
+  }
+
+  measure: 30_dy_act {
+    label: "30 Dy"
+    type: sum
+    sql: ${actives_30} ;;
+  }
+
+
+  dimension: actives_60 {
+    type: number
+    sql: ${TABLE}."actives_60" ;;
+  }
+
+  measure: 60_dy_act {
+    label: "60 Dy"
+    type: sum
+    sql: ${actives_60} ;;
+  }
+
+  dimension: actives_90 {
+    type: number
+    sql: ${TABLE}."actives_1" ;;
+  }
+
+  measure: 90_dy_act {
+    label: "90 Dy"
+    type: sum
+    sql: ${actives_90} ;;
+  }
+
 
 
 
