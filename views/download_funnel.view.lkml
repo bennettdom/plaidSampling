@@ -194,6 +194,83 @@ view: download_funnel {
     sql: ${TABLE}."zip" ;;
   }
 
+  dimension: num_users_with_points {
+    type:  number
+    sql: ${TABLE}."num_users_with_points" ;;
+  }
+
+  measure: users_with_points {
+    type: sum
+    sql: ${num_users_with_points} ;;
+  }
+
+
+  dimension: total_points {
+    type:  number
+    sql: ${TABLE}."total_points" ;;
+  }
+
+  measure: points {
+    type: sum
+    sql: ${total_points} ;;
+  }
+
+
+  dimension: num_with_at_least_300 {
+    type:  number
+    sql: ${TABLE}."num_with_at_least_300" ;;
+  }
+
+  measure: users_with_300_points {
+    type: sum
+    sql: ${num_with_at_least_300} ;;
+  }
+
+  dimension: num_with_at_least_600 {
+    type:  number
+    sql: ${TABLE}."num_with_at_least_600" ;;
+  }
+
+  measure: users_with_600_points {
+    type: sum
+    sql: ${num_with_at_least_600} ;;
+  }
+
+  dimension: num_with_at_least_900 {
+    type:  number
+    sql: ${TABLE}."num_with_at_least_900" ;;
+  }
+
+  measure: users_with_900_points {
+    type: sum
+    sql: ${num_with_at_least_900} ;;
+  }
+
+  dimension: num_with_receipts {
+    type:  number
+    sql: ${TABLE}."num_with_at_least_900" ;;
+  }
+
+  measure: users_with_receipt {
+    type: sum
+    sql: ${num_with_receipts} ;;
+  }
+
+  dimension: total_receipts {
+    type:  number
+    sql: ${TABLE}."total_receipts" ;;
+  }
+
+  measure: receipts {
+    type: sum
+    sql: ${total_receipts} ;;
+  }
+
+
+
+
+
+
   measure: count {
     type: count
     drill_fields: []
