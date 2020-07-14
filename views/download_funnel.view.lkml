@@ -248,7 +248,7 @@ view: download_funnel {
 
   dimension: num_with_receipts {
     type:  number
-    sql: ${TABLE}."num_with_at_least_900" ;;
+    sql: ${TABLE}."num_with_receipts" ;;
   }
 
   measure: users_with_receipt {
