@@ -358,7 +358,6 @@ view: download_funnel {
     sql: ${actives_30} ;;
   }
 
-
   measure: 60_dy_act {
     group_label: "Active Users"
     label: "60 Day Active Users"
@@ -373,12 +372,8 @@ view: download_funnel {
     sql: ${actives_90} ;;
   }
 
-
-
-
-
-
   measure: count {
+    hidden: yes
     type: count
     drill_fields: []
   }
