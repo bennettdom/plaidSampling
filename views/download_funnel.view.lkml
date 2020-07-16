@@ -13,11 +13,13 @@ view: download_funnel {
   }
 
   dimension: bank_linked {
+    hidden: yes
     type: number
     sql: ${TABLE}."bank_linked" ;;
   }
 
   measure: bank_link {
+    label: "Total Users with Bank Linked"
     sql: ${bank_linked} ;;
     type: sum
     value_format_name: decimal_0
@@ -222,52 +224,60 @@ view: download_funnel {
   }
 
   measure: users_with_300_points {
+    group_label: "User Metrics"
     type: sum
     sql: ${num_with_at_least_300} ;;
   }
 
   dimension: num_with_at_least_600 {
+    hidden: yes
     type:  number
     sql: ${TABLE}."num_with_at_least_600" ;;
   }
 
   measure: users_with_600_points {
+    group_label: "User Metrics"
     type: sum
     sql: ${num_with_at_least_600} ;;
   }
 
   dimension: num_with_at_least_900 {
+    hidden: yes
     type:  number
     sql: ${TABLE}."num_with_at_least_900" ;;
   }
 
   measure: users_with_900_points {
+    group_label: "User Metrics"
     type: sum
     sql: ${num_with_at_least_900} ;;
   }
 
   dimension: num_with_receipts {
+    hidden: yes
     type:  number
     sql: ${TABLE}."num_with_receipts" ;;
   }
 
   measure: users_with_receipt {
+    group_label: "User Metrics"
     type: sum
     sql: ${num_with_receipts} ;;
   }
 
   dimension: total_receipts {
+    hidden: yes
     type:  number
     sql: ${TABLE}."total_receipts" ;;
   }
 
   measure: receipts {
+    label: "Total Receipts"
     type: sum
     sql: ${total_receipts} ;;
   }
 
   dimension: has_scanned_receipt {
-    label: "Rcpt Scnr"
     type: yesno
     sql: ${TABLE}."has_scanned_receipt" ;;
   }
@@ -278,7 +288,8 @@ view: download_funnel {
   }
 
   measure: 1_dy_act {
-    label: "1 Dy"
+    group_label: "Active Users"
+    label: "1 Day Active Users"
     type: sum
     sql: ${actives_1} ;;
   }
@@ -290,42 +301,49 @@ view: download_funnel {
   }
 
   measure: 7_dy_act {
-    label: "7 Dy"
+    group_label: "Active Users"
+    label: "7 Day Active Users"
     type: sum
     sql: ${actives_7} ;;
   }
 
 
   dimension: actives_30 {
+    hidden: yes
     type: number
     sql: ${TABLE}."actives_30" ;;
   }
 
   measure: 30_dy_act {
-    label: "30 Dy"
+    group_label: "Active Users"
+    label: "30 Day Active Users"
     type: sum
     sql: ${actives_30} ;;
   }
 
 
   dimension: actives_60 {
+    hidden: yes
     type: number
     sql: ${TABLE}."actives_60" ;;
   }
 
   measure: 60_dy_act {
-    label: "60 Dy"
+    group_label: "Active Users"
+    label: "60 Day Active Users"
     type: sum
     sql: ${actives_60} ;;
   }
 
   dimension: actives_90 {
+    hidden: yes
     type: number
     sql: ${TABLE}."actives_90" ;;
   }
 
   measure: 90_dy_act {
-    label: "90 Dy"
+    group_label: "Active Users"
+    label: "90 Day Active Users"
     type: sum
     sql: ${actives_90} ;;
   }
