@@ -195,7 +195,7 @@ view: download_funnel {
 
 ######-------Measures-------######
   measure:  address {
-    group_label: "Total User Metrics"
+    group_label: "Other Total User Metrics"
     label: "Total Users with Addresses"
     sql: ${address_set} ;;
     type: sum
@@ -204,7 +204,7 @@ view: download_funnel {
 
   measure: bank_link {
     label: "Total Users with Bank Linked"
-    group_label: "Total User Metrics"
+    group_label: "Other Total User Metrics"
     sql: ${bank_linked} ;;
     type: sum
     value_format_name: decimal_0
@@ -213,7 +213,7 @@ view: download_funnel {
 
   measure: debitcard_link_attempt {
     label: "Total Users with Debit Card Link Attempted"
-    group_label: "Total User Metrics"
+    group_label: "Other Total User Metrics"
     sql: ${debitcard_link_attempted} ;;
     type: sum
     value_format_name: decimal_0
@@ -221,7 +221,7 @@ view: download_funnel {
 
   measure: debitcard_link {
     label: "Total Users with Debit Card Linked"
-    group_label: "Total User Metrics"
+    group_label: "Other Total User Metrics"
     sql: ${debitcard_linked} ;;
     type: sum
     value_format_name: decimal_0
@@ -229,7 +229,7 @@ view: download_funnel {
 
   measure: debitcard {
     label: "Total Users with Debit Cards Set"
-    group_label: "Total User Metrics"
+    group_label: "Other Total User Metrics"
     sql: ${debitcard_set} ;;
     type: sum
     value_format_name: decimal_0
@@ -237,7 +237,7 @@ view: download_funnel {
 
   measure: email {
     label: "Total Users with Email Verified"
-    group_label: "Total User Metrics"
+    group_label: "Other Total User Metrics"
     sql: ${email_verified} ;;
     type: sum
     value_format_name: decimal_0
@@ -252,7 +252,7 @@ view: download_funnel {
 
   measure: phone {
     label: "Total Users with Phone Verified"
-    group_label: "Total User Metrics"
+    group_label: "Other Total User Metrics"
     sql: ${phone_verified} ;;
     type: sum
     value_format_name: decimal_0
@@ -334,6 +334,7 @@ view: download_funnel {
 
   measure: users_with_receipt {
     label: "Total Users with Receipts"
+    group_label: "Other Total User Metrics"
     type: sum
     sql: ${num_with_receipts} ;;
   }
