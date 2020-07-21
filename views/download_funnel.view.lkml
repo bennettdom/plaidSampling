@@ -68,6 +68,7 @@ view: download_funnel {
       raw,
       date,
       month,
+      month_name,
       year,
       week,
       week_of_year,
