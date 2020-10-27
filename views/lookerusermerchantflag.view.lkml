@@ -19,6 +19,10 @@ view: lookerusermerchantflag {
   measure: distinct_user {
     type: count_distinct
     sql: ${userid} ;;
-    hidden: yes
+  }
+
+  measure: distinct_merchant {
+    type: count_distinct
+    sql: ${merchantname} ;;
   }
 }
