@@ -15,4 +15,10 @@ view: lookerusermerchantflag {
     type: count
     drill_fields: [merchantname]
   }
+
+  measure: distinct_user {
+    type: count_distinct
+    sql: ${userid} ;;
+    hidden: yes
+  }
 }
