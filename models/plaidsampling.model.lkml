@@ -10,4 +10,14 @@ datagroup: plaidsampling_default_datagroup {
 
 persist_with: plaidsampling_default_datagroup
 
-explore: lookerplaidtransaction {}
+explore: lookerplaidtransaction {
+  join: lookeruserpii {
+    type: inner
+    sql_on: ${lookerplaidtransaction.userid} = ${lookeruserpii.userid} ;;
+    relationship: many_to_one
+  }
+}
+
+# explore: lookeruserpii {}
+
+explore: lookerusermerchantflag {}
