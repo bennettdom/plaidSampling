@@ -18,6 +18,10 @@ explore: lookerplaidtransaction {
   }
 }
 
-# explore: lookeruserpii {}
-
-explore: lookerusermerchantflag {}
+explore: lookeruserpii {
+  join: lookerusermerchantflag {
+    type:  inner
+    sql_on: ${lookeruserpii.userid} = ${lookerusermerchantflag.userid} ;;
+    relationship: one_to_many
+  }
+}
