@@ -1,0 +1,21 @@
+view: lookerusermerchantflagsgrouping {
+  derived_table: {
+    sql:
+      SELECT
+        userid,
+        STRING_AGG(merchantname, ' ||| ') AS merchantnames
+      FROM lookerusermerchantflag
+      GROUP BY userid ;;
+  }
+
+  dimension: userid {
+    type: string
+    sql: ${TABLE}."userid" ;;
+    hidden: yes
+  }
+
+  dimension: merchantnames {
+    type: string
+    sql: ${TABLE}."merchantnames" ;;
+  }
+}

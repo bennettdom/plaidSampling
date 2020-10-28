@@ -19,9 +19,14 @@ explore: lookerplaidtransaction {
 }
 
 explore: lookeruserpii {
-  join: lookerusermerchantflag {
+  join: lookerusermerchantflagsgrouping {
     type:  inner
-    sql_on: ${lookeruserpii.userid} = ${lookerusermerchantflag.userid} ;;
+    sql_on: ${lookeruserpii.userid} = ${lookerusermerchantflagsgrouping.userid} ;;
+    relationship: one_to_one
+  }
+  join: lookerplaidtransaction {
+    type: inner
+    sql_on: ${lookeruserpii.userid} = ${lookerplaidtransaction.userid} ;;
     relationship: one_to_many
   }
 }
