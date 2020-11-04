@@ -1,6 +1,12 @@
 view: lookerplaidtransaction {
   sql_table_name: public.lookerplaidtransaction ;;
 
+  dimension: primary_key {
+    primary_key: yes
+    sql: CONCAT(${TABLE}."userid", "-", ${TABLE}."accountid", "-", ${TABLE}."transactionid") ;;
+    hidden:  yes
+  }
+
   dimension: accesstoken {
     type: string
     sql: ${TABLE}."accesstoken" ;;
