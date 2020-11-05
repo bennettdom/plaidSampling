@@ -61,7 +61,7 @@ view: lookerplaidtransaction {
 
   dimension: categorylevel2 {
     type: string
-    sql: ${TABLE}."categorylevel2" ;;
+    sql: ${TABLE}."categorylevel2";;
   }
 
   dimension: categorylevel3 {
