@@ -21,7 +21,23 @@ view: walmartreceipt {
       FROM walmartreceipt wr
       INNER JOIN walmartstore ws ON wr.storeid = ws.storeid
       LEFT JOIN walmartreceiptitem wri ON wr.userid = wri.userid AND wr.transactionid = wri.transactionid AND wr.tcnumber = wri.tcnumber
-      GROUP BY wr.transactionid;;
+      GROUP BY (
+        wr.userid,
+        wr.transactionid,
+        wr.timestamp,
+        wr.numberofitems,
+        wr.subtotal,
+        wr.changedue,
+        wr.taxtotal,
+        wr.totalamount,
+        wr.barcodeimageurl,
+        ws.addressline1,
+        ws.addressline2,
+        ws.city,
+        ws.state,
+        ws.zip,
+        ws.displayname
+      );;
   }
 
   dimension: userid {
