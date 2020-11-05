@@ -16,17 +16,23 @@ explore: lookeruserpii {
     sql_on: ${lookeruserpii.userid} = ${lookerusermerchantflagsgrouping.userid} ;;
     relationship: one_to_one
   }
-  join: lookerplaidtransactionwithreceipt {
+  join: lookerplaidtransaction {
     type: inner
-    sql_on: ${lookeruserpii.userid} = ${lookerplaidtransactionwithreceipt.userid} ;;
+    sql_on: ${lookeruserpii.userid} = ${lookerplaidtransaction.userid} ;;
     relationship: one_to_many
   }
 }
 
-explore: lookerplaidtransaction {
-  join: walmartreceipt {
-    type:  left_outer
-    sql_on: ${lookerplaidtransaction.userid} = ${walmartreceipt.userid} AND ${lookerplaidtransaction.transactionid} = ${walmartreceipt.transactionid} ;;
+explore: lookeruserpiireceipts {
+  from: lookeruserpii
+  join: lookerusermerchantflagsgrouping {
+    type:  inner
+    sql_on: ${lookeruserpiireceipts.userid} = ${lookerusermerchantflagsgrouping.userid} ;;
     relationship: one_to_one
+  }
+  join: walmartreceipt {
+    type: inner
+    sql_on: ${lookeruserpiireceipts.userid} = ${walmartreceipt.userid} ;;
+    relationship: one_to_many
   }
 }

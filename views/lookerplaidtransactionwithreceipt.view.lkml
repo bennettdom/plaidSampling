@@ -251,5 +251,11 @@ view: lookerplaidtransactionwithreceipt {
   }
   dimension: walmartreceiptitems {
     type: string
+    html: {% assign words = {{value}} | split: ' ||| ' %}
+    <ul>
+    {% for word in words %}
+    <li>{{ word }}</li>
+    {% endfor %}
+    </ul>;;
   }
 }

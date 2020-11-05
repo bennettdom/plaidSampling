@@ -18,7 +18,7 @@ view: lookerusermerchantflagsgrouping {
     type: string
     sql: ${TABLE}."merchantnames" ;;
     suggest_explore: lookeruserpii
-    suggest_dimension: lookerplaidtransactionwithreceipt.merchantname
+    suggest_dimension: lookerplaidtransaction.merchantname
     html: {% assign words = {{value}} | split: ' ||| ' %}
     <ul>
     {% for word in words %}

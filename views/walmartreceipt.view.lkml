@@ -2,42 +2,38 @@ view: walmartreceipt {
   derived_table: {
     sql:
       SELECT
-        wr.userid,
-        wr.transactionid,
-        wr.timestamp,
-        wr.numberofitems,
+        wri.userid,
+        wri.transactionid,
+        wri.tcnumber,
+        wri.lineitem,
+        wri.itemid,
+        wri.upc,
+        wri.price,
+        wri.quantity,
+        wri.description,
+        wri.imageurl,
+        to_timestamp(wr.timestamp / 1000) as timestamp,
         wr.subtotal,
         wr.changedue,
         wr.taxtotal,
         wr.totalamount,
-        wr.barcodeimageurl,
-        ws.addressline1 as addressline1,
-        ws.addressline2 as addressline2,
-        ws.city as city,
-        ws.state as state,
-        ws.zip as zip,
-        ws.displayname as storedisplayname,
-        STRING_AGG(CONCAT('description: ', wri.description, ', quantity: ', wri.quantity, ', price: ', wri.price, ', imageurl: ', wri.imageurl), ' ||| ') as receiptitems
-      FROM walmartreceipt wr
-      INNER JOIN walmartstore ws ON wr.storeid = ws.storeid
-      LEFT JOIN walmartreceiptitem wri ON wr.userid = wri.userid AND wr.transactionid = wri.transactionid AND wr.tcnumber = wri.tcnumber
-      GROUP BY (
-        wr.userid,
-        wr.transactionid,
-        wr.timestamp,
         wr.numberofitems,
-        wr.subtotal,
-        wr.changedue,
-        wr.taxtotal,
-        wr.totalamount,
         wr.barcodeimageurl,
         ws.addressline1,
         ws.addressline2,
-        ws.city,
-        ws.state,
-        ws.zip,
-        ws.displayname
-      );;
+        ws.city as city,
+        ws.state as state,
+        ws.zip as zip,
+        ws.displayname as storedisplayname
+      FROM walmartreceiptitem wri
+      INNER JOIN walmartreceipt wr ON wri.userid = wr.userid AND wri.transactionid = wr.transactionid AND wri.tcnumber = wr.tcnumber
+      INNER JOIN walmartstore ws ON wr.storeid = ws.storeid;;
+  }
+
+  dimension: primarykey {
+    primary_key: yes
+    sql: CONCAT(${TABLE}."userid", '-', ${TABLE}."transactionid", '-', ${TABLE}."tcnumber", '-', ${TABLE}."lineitem") ;;
+    hidden: yes
   }
 
   dimension: userid {
@@ -52,10 +48,44 @@ view: walmartreceipt {
     hidden: yes
   }
 
-  dimension: timestamp {
-    type: date_time
-    sql: ${TABLE}."transactionid" ;;
-    hidden: yes
+  dimension: upc {
+    type: string
+    sql: ${TABLE}."upc" ;;
+  }
+
+  dimension: price {
+    type: number
+    sql: ${TABLE}."price" ;;
+  }
+
+  dimension: quantity {
+    type: number
+    sql: ${TABLE}."quantity" ;;
+  }
+
+  dimension: description {
+    type: string
+    sql: ${TABLE}."description" ;;
+  }
+
+  dimension: imageurl {
+    type: string
+    sql: ${TABLE}."imageurl" ;;
+  }
+
+  dimension_group: timestamp {
+    timeframes: [
+      raw,
+      date,
+      month,
+      month_name,
+      year,
+      week,
+      week_of_year,
+      day_of_week
+    ]
+    type: time
+    sql: ${TABLE}."timestamp" ;;
   }
 
   dimension: numberofitems {
@@ -116,16 +146,5 @@ view: walmartreceipt {
   dimension: storedisplayname {
     type:  string
     sql:  ${TABLE}."storedisplayname" ;;
-  }
-
-  dimension: receiptitems {
-    type: string
-    sql: ${TABLE}."receiptitems" ;;
-    html: {% assign words = {{value}} | split: ' ||| ' %}
-          <ul>
-          {% for word in words %}
-          <li>{{ word }}</li>
-          {% endfor %}
-          </ul>;;
   }
 }
