@@ -266,13 +266,12 @@ view: lookerplaidtransaction {
     hidden: yes
   }
 
-  # measure: scaledusers {
-  #   type: sum
-  #   sql: 10 * ${distinct_user} ;;
-  # }
+  measure: scaledusers {
+    type: sum
+    sql: 10 * ${userid} ;;
+  }
 
-  # measure: scaledspend {
-  #   type: sum
-  #   sql: 10 * ${spend} ;;
-  # }
-}
+ measure: scaledspend {
+    type: sum
+    sql: ${amount}*10 ;;
+  }}
