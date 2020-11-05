@@ -93,22 +93,22 @@ view: walmartreceipt {
     sql:  ${TABLE}."numberofitems" ;;
   }
 
-  dimension: subtotal {
+  dimension: receiptsubtotal {
     type:  number
     sql:  ${TABLE}."subtotal" ;;
   }
 
-  dimension: changedue {
+  dimension: receiptchangedue {
     type:  number
     sql:  ${TABLE}."changedue" ;;
   }
 
-  dimension: taxtotal {
+  dimension: receipttaxtotal {
     type:  number
     sql:  ${TABLE}."taxtotal" ;;
   }
 
-  dimension: totalamount {
+  dimension: receipttotalamount {
     type:  number
     sql:  ${TABLE}."totalamount" ;;
   }

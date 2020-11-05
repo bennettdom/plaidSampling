@@ -2,41 +2,31 @@ view: scannedreceipt {
   derived_table: {
     sql:
       SELECT
-        sr.userid,
-        sr.transactionid,
-        sr.receiptdate,
-        sr.receipttime,
-        sr.numberofitems,
-        sr.subtotalvalue,
-        sr.total,
-        sr.taxes,
-        sr.blinkstorenumber,
-        sr.barcodeimageurl,
+        srp.userid,
+        srp.plaidtransactionid,
+        srp.linenumber,
+        srp.upc,
+        srp.unitprice,
+        srp.quantity,
+        srp.productdescription,
+        srp.productimageurl,
+        TO_TIMESTAMP(CONCAT(sr.receiptdate, ' ', sr.receipttime), 'MM/DD/YYYY HH24:MI') as timestamp,
+        sr.subtotalvalue as receiptsubtotal,
+        sr.taxes as receipttaxes,
+        sr.total as receipttotal,
         sr.storestreetaddress,
-        sr.storecity,
-        sr.storestate,
-        sr.storezip,
-        sr.merchantname,
-        STRING_AGG(CONCAT('description: ', srp.productdescription, ', quantity: ', srp.quantity, ', price: ', srp.unitprice, ', image url: ', wri.productimageurl), ' ||| ') as receiptitems
-      FROM receiptheader sr
-      LEFT JOIN receiptproducts srp ON sr.userid = srp.userid AND sr.transactionid = srp.transactionid
-      GROUP BY (
-        sr.userid,
-        sr.transactionid,
-        sr.receiptdate,
-        sr.receipttime,
-        sr.numberofitems,
-        sr.subtotalvalue,
-        sr.total,
-        sr.taxes,
-        sr.blinkstorenumber,
-        sr.barcodeimageurl,
-        sr.storestreetaddress,
-        sr.storecity,
-        sr.storestate,
-        sr.storezip,
-        sr.merchantname
-      );;
+        sr.storecity as city,
+        sr.storestate as state,
+        sr.storezip as zip,
+        sr.merchantname as storedisplayname
+      FROM receiptproducts srp
+      INNER JOIN receiptheader sr ON srp.userid = sr.userid AND srp.plaidtransactionid = sr.plaidtransactionid;;
+  }
+
+  dimension: primarykey {
+    primary_key: yes
+    sql: CONCAT(${TABLE}."userid", '-', ${TABLE}."plaidtransactionid", '-', ${TABLE}."linenumber") ;;
+    hidden: yes
   }
 
   dimension: userid {
@@ -45,62 +35,70 @@ view: scannedreceipt {
     hidden: yes
   }
 
-  dimension: transactionid {
+  dimension: plaidtransactionid {
     type: string
-    sql: ${TABLE}."transactionid" ;;
+    sql: ${TABLE}."plaidtransactionid" ;;
     hidden: yes
   }
 
-  dimension: receiptdate {
-    type: date
-    sql: ${TABLE}."receiptdate" ;;
-    hidden: yes
-  }
-
-  dimension: receipttime {
+  dimension: upc {
     type: string
-    sql: ${TABLE}."receipttime" ;;
-    hidden: yes
+    sql: ${TABLE}."upc" ;;
   }
 
-  dimension: numberofitems {
+  dimension: price {
     type: number
-    sql:  ${TABLE}."numberofitems" ;;
+    sql: ${TABLE}."unitprice" ;;
   }
 
-  dimension: subtotal {
+  dimension: quantity {
+    type: number
+    sql: ${TABLE}."quantity" ;;
+  }
+
+  dimension: description {
+    type: string
+    sql: ${TABLE}."productdescription" ;;
+  }
+
+  dimension: imageurl {
+    type: string
+    sql: ${TABLE}."productimageurl" ;;
+  }
+
+  dimension_group: timestamp {
+    timeframes: [
+      raw,
+      date,
+      month,
+      month_name,
+      year,
+      week,
+      week_of_year,
+      day_of_week
+    ]
+    type: time
+    sql: ${TABLE}."timestamp" ;;
+  }
+
+  dimension: receiptsubtotal {
     type:  number
-    sql:  ${TABLE}."subtotal" ;;
+    sql:  ${TABLE}."receiptsubtotal" ;;
   }
 
-  dimension: changedue {
+  dimension: receipttaxes {
     type:  number
-    sql:  ${TABLE}."changedue" ;;
+    sql:  ${TABLE}."receipttaxes" ;;
   }
 
-  dimension: taxtotal {
+  dimension: receipttotal {
     type:  number
-    sql:  ${TABLE}."taxtotal" ;;
-  }
-
-  dimension: totalamount {
-    type:  number
-    sql:  ${TABLE}."totalamount" ;;
-  }
-
-  dimension: barcodeimageurl {
-    type:  string
-    sql:  ${TABLE}."barcodeimageurl" ;;
+    sql:  ${TABLE}."receipttotal" ;;
   }
 
   dimension: addressline1 {
     type:  string
-    sql:  ${TABLE}."addressline1" ;;
-  }
-
-  dimension: addressline2 {
-    type:  string
-    sql:  ${TABLE}."addressline2" ;;
+    sql:  ${TABLE}."storestreetaddress" ;;
   }
 
   dimension: city {
@@ -121,16 +119,5 @@ view: scannedreceipt {
   dimension: storedisplayname {
     type:  string
     sql:  ${TABLE}."storedisplayname" ;;
-  }
-
-  dimension: receiptitems {
-    type: string
-    sql: ${TABLE}."receiptitems" ;;
-    html: {% assign words = {{value}} | split: ' ||| ' %}
-          <ul>
-          {% for word in words %}
-          <li>{{ word }}</li>
-          {% endfor %}
-          </ul>;;
   }
 }
