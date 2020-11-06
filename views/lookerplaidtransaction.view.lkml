@@ -235,7 +235,6 @@ view: lookerplaidtransaction {
   dimension: userid {
     type: string
     sql: ${TABLE}."userid" ;;
-    hidden: yes
   }
 
   dimension: zipcode {
