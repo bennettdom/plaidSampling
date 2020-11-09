@@ -22,3 +22,22 @@ explore: lookeruserpii {
     relationship: one_to_many
   }
 }
+
+explore: lookeruserpiireceipts {
+  from: lookeruserpii
+  join: lookerusermerchantflagsgrouping {
+    type:  inner
+    sql_on: ${lookeruserpiireceipts.userid} = ${lookerusermerchantflagsgrouping.userid} ;;
+    relationship: one_to_one
+  }
+  join: walmartreceipt {
+    type: inner
+    sql_on: ${lookeruserpiireceipts.userid} = ${walmartreceipt.userid} ;;
+    relationship: one_to_many
+  }
+  join: scannedreceipt {
+    type: inner
+    sql_on: ${lookeruserpiireceipts.userid} = ${scannedreceipt.userid} ;;
+    relationship: one_to_many
+  }
+}
