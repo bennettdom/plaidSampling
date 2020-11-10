@@ -10,6 +10,11 @@ view: scannedreceipt {
         srp.quantity,
         srp.productdescription,
         srp.productimageurl,
+        srp.categorylevel1,
+        srp.categorylevel2,
+        srp.categorylevel3,
+        srp.categorylevel4,
+        srp.categorylevel5,
         TO_TIMESTAMP(CONCAT(sr.receiptdate, ' ', sr.receipttime), 'MM/DD/YYYY HH24:MI') as timestamp,
         sr.subtotalvalue as receiptsubtotal,
         sr.taxes as receipttaxes,
@@ -64,6 +69,31 @@ view: scannedreceipt {
   dimension: imageurl {
     type: string
     sql: ${TABLE}."productimageurl" ;;
+  }
+
+  dimension: categorylevel1 {
+    type: string
+    sql: ${TABLE}."categorylevel1" ;;
+  }
+
+  dimension: categorylevel2 {
+    type: string
+    sql: ${TABLE}."categorylevel2" ;;
+  }
+
+  dimension: categorylevel3 {
+    type: string
+    sql: ${TABLE}."categorylevel3" ;;
+  }
+
+  dimension: categorylevel4 {
+    type: string
+    sql: ${TABLE}."categorylevel4" ;;
+  }
+
+  dimension: categorylevel5 {
+    type: string
+    sql: ${TABLE}."categorylevel5" ;;
   }
 
   dimension_group: timestamp {
