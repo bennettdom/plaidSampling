@@ -41,3 +41,5 @@ explore: lookeruserpiireceipts {
     relationship: one_to_many
   }
 }
+
+explore: receipt {}
