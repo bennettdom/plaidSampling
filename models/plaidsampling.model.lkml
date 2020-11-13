@@ -42,4 +42,10 @@ explore: lookeruserpiireceipts {
   }
 }
 
-explore: receipt {}
+explore: receipt {
+  join: usermerchantflag {
+    type: inner
+    sql_on: ${receipt.userid} = ${usermerchantflag.userid} ;;
+    relationship: many_to_one
+  }
+}
