@@ -3039,7 +3039,7 @@ bool_or(merchantname = 'Ysi Kernan Land Co') as "Ysi Kernan Land Co",
 bool_or(merchantname = 'Quadpay Fas') as "Quadpay Fas",
 bool_or(merchantname = 'Qpamazon') as "Qpamazon",
 bool_or(merchantname = 'Quany') as "Quany"
-     FROM plaidtransaction
+     FROM lookerusermerchantflag
       WHERE merchantname IS NOT NULL AND merchantname != ''
       GROUP BY userid
       ;;
