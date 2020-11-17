@@ -176,6 +176,11 @@ view: lookeruserpii {
     sql: ${TABLE}."zip" ;;
   }
 
+  dimension: gender {
+    type: zipcode
+    sql: ${TABLE}."gender" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [firstname, lastname, employername]
