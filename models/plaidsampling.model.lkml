@@ -11,33 +11,14 @@ datagroup: plaidsampling_default_datagroup {
 persist_with: plaidsampling_default_datagroup
 
 explore: lookeruserpii {
-  join: lookerusermerchantflagsgrouping {
+  join: usermerchantflag {
     type:  inner
-    sql_on: ${lookeruserpii.userid} = ${lookerusermerchantflagsgrouping.userid} ;;
+    sql_on: ${lookeruserpii.userid} = ${usermerchantflag.userid} ;;
     relationship: one_to_one
   }
   join: lookerplaidtransaction {
     type: inner
     sql_on: ${lookeruserpii.userid} = ${lookerplaidtransaction.userid} ;;
-    relationship: one_to_many
-  }
-}
-
-explore: lookeruserpiireceipts {
-  from: lookeruserpii
-  join: lookerusermerchantflagsgrouping {
-    type:  inner
-    sql_on: ${lookeruserpiireceipts.userid} = ${lookerusermerchantflagsgrouping.userid} ;;
-    relationship: one_to_one
-  }
-  join: walmartreceipt {
-    type: inner
-    sql_on: ${lookeruserpiireceipts.userid} = ${walmartreceipt.userid} ;;
-    relationship: one_to_many
-  }
-  join: scannedreceipt {
-    type: inner
-    sql_on: ${lookeruserpiireceipts.userid} = ${scannedreceipt.userid} ;;
     relationship: one_to_many
   }
 }
