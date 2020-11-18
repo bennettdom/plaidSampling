@@ -23,10 +23,16 @@ explore: lookeruserpii {
   }
 }
 
-explore: receipt {
+explore: receiptlookeruserpii {
+  from: lookeruserpii
   join: usermerchantflag {
     type: inner
-    sql_on: ${receipt.userid} = ${usermerchantflag.userid} ;;
-    relationship: many_to_one
+    sql_on: ${receiptlookeruserpii.userid} = ${usermerchantflag.userid} ;;
+    relationship: one_to_one
+  }
+  join: receipt {
+    type:  inner
+    sql_on: ${receiptlookeruserpii.userid} = ${receipt.userid} ;;
+    relationship: one_to_many
   }
 }

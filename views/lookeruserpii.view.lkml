@@ -169,6 +169,7 @@ view: lookeruserpii {
     type: string
     sql: ${TABLE}."userid" ;;
     hidden: yes
+    primary_key: yes
   }
 
   dimension: zip {
