@@ -181,6 +181,16 @@ view: lookeruserpii {
     sql: ${TABLE}."gender" ;;
   }
 
+  dimension: monthlyincome {
+    type: number
+    sql: ${TABLE}."monthlyincome" ;;
+  }
+
+  dimension: annualincome {
+    type: number
+    sql: ${TABLE}."annualincome" ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [firstname, lastname, employername]
