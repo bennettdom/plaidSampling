@@ -8,9 +8,10 @@ view: usermerchantflag {
     hidden: yes
   }
 
-  dimension: merchantnames {
+  dimension: 0000000__merchantnames {
     type: string
     sql: ${TABLE}."merchantnames" ;;
+    case_sensitive: no
   }
 
   dimension: 16_Intl_Diamond_Cente { type: yesno sql: ${TABLE}."#16 Intl Diamond Cente";; }

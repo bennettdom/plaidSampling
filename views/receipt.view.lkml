@@ -72,11 +72,13 @@ view: receipt {
   dimension: productname {
     type: string
     sql: ${TABLE}."productname" ;;
+    case_sensitive: no
   }
 
   dimension: merchantname {
     type: string
     sql: ${TABLE}."merchantname" ;;
+    case_sensitive: no
   }
 
   dimension: description {
@@ -137,5 +139,15 @@ view: receipt {
   dimension: receipttotal {
     type: number
     sql: ${TABLE}."receipttotal" ;;
+  }
+
+  measure: count {
+    type: count
+    drill_fields: [primarykey]
+  }
+
+  measure: spend {
+    type: sum
+    sql: ${unitprice}*${quantity} ;;
   }
 }
