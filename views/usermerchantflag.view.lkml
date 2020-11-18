@@ -39,7 +39,7 @@ view: usermerchantflag {
   dimension: Academy_Spor {   type: yesno   sql: ${TABLE}."Academy Spor";; }
   dimension: Academy_Sports_and_Outdoors {   type: yesno   sql: ${TABLE}."Academy Sports + Outdoors";; }
   dimension: Acceptancenow {   type: yesno   sql: ${TABLE}."Acceptancenow";; }
-  dimension: Acceptancenow.c {   type: yesno   sql: ${TABLE}."Acceptancenow.c";; }
+  dimension: Acceptancenow_dot_c {   type: yesno   sql: ${TABLE}."Acceptancenow.c";; }
   dimension: Ace_Hardware {   type: yesno   sql: ${TABLE}."Ace Hardware";; }
   dimension: Aci_Ally_Auto {   type: yesno   sql: ${TABLE}."Aci Ally Auto";; }
   dimension: Acme_Markets {   type: yesno   sql: ${TABLE}."Acme Markets";; }
@@ -321,7 +321,7 @@ view: usermerchantflag {
   dimension: Clckpay {   type: yesno   sql: ${TABLE}."Clckpay";; }
   dimension: Cleo {     type: yesno     sql: ${TABLE}."Cleo";;   }
   dimension: Cmsvend_Cv {   type: yesno   sql: ${TABLE}."Cmsvend Cv";; }
-  dimension: Co._LTD {   type: yesno   sql: ${TABLE}."Co. LTD";; }
+  dimension: Co_dot_LTD {   type: yesno   sql: ${TABLE}."Co. LTD";; }
   dimension: Coach_Inc {   type: yesno   sql: ${TABLE}."Coach Inc";; }
   dimension: Coast_To_Coast_Motors {   type: yesno   sql: ${TABLE}."Coast To Coast Motors";; }
   dimension: Coca_Cola {   type: yesno   sql: ${TABLE}."Coca-Cola";; }
@@ -431,13 +431,13 @@ view: usermerchantflag {
   dimension: Dunkin {     type: yesno     sql: ${TABLE}."Dunkin";;   }
   dimension: Dunkin_Donuts {   type: yesno   sql: ${TABLE}."Dunkin'' Donuts";; }
   dimension: Dutch_Bros {   type: yesno   sql: ${TABLE}."Dutch Bros";; }
-  dimension: Dutch_Bros._Coffee {   type: yesno   sql: ${TABLE}."Dutch Bros. Coffee";; }
+  dimension: Dutch_Bros_dot_Coffee {   type: yesno   sql: ${TABLE}."Dutch Bros. Coffee";; }
   dimension: E_Bay_O {   type: yesno   sql: ${TABLE}."E Bay O";; }
   dimension: E_Z_Mart {   type: yesno   sql: ${TABLE}."E-Z Mart";; }
   dimension: Earni {   type: yesno   sql: ${TABLE}."Earni";; }
   dimension: Eastbay {   type: yesno   sql: ${TABLE}."Eastbay";; }
   dimension: Easy_Money {   type: yesno   sql: ${TABLE}."Easy Money";; }
-  dimension: Eats_Help.uber_comca {   type: yesno   sql: ${TABLE}."Eats Help.uber.comca";; }
+  dimension: Eats_Help_dot_uber_comca {   type: yesno   sql: ${TABLE}."Eats Help.uber.comca";; }
   dimension: Ebay_Inc {   type: yesno   sql: ${TABLE}."Ebay Inc";; }
   dimension: Ebay_Us {   type: yesno   sql: ${TABLE}."Ebay Us";; }
   dimension: eBay {     type: yesno     sql: ${TABLE}."eBay";;   }
@@ -504,7 +504,7 @@ view: usermerchantflag {
   dimension: Fas_Mart {   type: yesno   sql: ${TABLE}."Fas Mart";; }
   dimension: Fashion {   type: yesno   sql: ${TABLE}."Fashion";; }
   dimension: Fashionnova {   type: yesno   sql: ${TABLE}."Fashionnova";; }
-  dimension: Fashionnova.c {   type: yesno   sql: ${TABLE}."Fashionnova.c";; }
+  dimension: Fashionnova_dot_c {   type: yesno   sql: ${TABLE}."Fashionnova.c";; }
   dimension: Fasmart {   type: yesno   sql: ${TABLE}."Fasmart";; }
   dimension: Fast_Stop {   type: yesno   sql: ${TABLE}."Fast Stop";; }
   dimension: Fastrak_Csc {   type: yesno   sql: ${TABLE}."Fastrak Csc";; }
@@ -627,7 +627,7 @@ view: usermerchantflag {
   dimension: Guess {   type: yesno   sql: ${TABLE}."Guess";; }
   dimension: Guitar_Center {   type: yesno   sql: ${TABLE}."Guitar Center";; }
   dimension: Gulf_Oil {   type: yesno   sql: ${TABLE}."Gulf Oil";; }
-  dimension: H.a_Tall_Oaks {   type: yesno   sql: ${TABLE}."H.a. Tall Oaks";; }
+  dimension: H_dot_a_Tall_Oaks {   type: yesno   sql: ${TABLE}."H.a. Tall Oaks";; }
   dimension: H_E_B {     type: yesno     sql: ${TABLE}."H-E-B" OR ${TABLE}."H E B" OR ${TABLE}."H-e-b";;   }
   dimension: H_Mart {   type: yesno   sql: ${TABLE}."H Mart";; }
   dimension: H_and_M {   type: yesno   sql: ${TABLE}."H&M";; }
@@ -714,7 +714,7 @@ view: usermerchantflag {
   dimension: Isdpromx {   type: yesno   sql: ${TABLE}."Isdpromx";; }
   dimension: Item_Returned {   type: yesno   sql: ${TABLE}."Item Returned";; }
   dimension: iTunes {   type: yesno   sql: ${TABLE}."iTunes";; }
-  dimension: J.c_Penny {   type: yesno   sql: ${TABLE}."J.c. Penny";; }
+  dimension: J_dot_c_Penny {   type: yesno   sql: ${TABLE}."J.c. Penny";; }
   dimension: JCPenney {   type: yesno   sql: ${TABLE}."JCPenney";; }
   dimension: Jack_In_The {   type: yesno   sql: ${TABLE}."Jack In The";; }
   dimension: Jack_in_the_Box {     type: yesno     sql: ${TABLE}."Jack in the Box";;   }
@@ -842,7 +842,7 @@ view: usermerchantflag {
   dimension: Mcdonalds {   type: yesno   sql: ${TABLE}."Mcdonald''s";; }
   dimension: Mco_Gibraltar {   type: yesno   sql: ${TABLE}."Mco Gibraltar";; }
   dimension: Mcvay_Motors {   type: yesno   sql: ${TABLE}."Mcvay Motors";; }
-  dimension: Med._Village {   type: yesno   sql: ${TABLE}."Med. Village";; }
+  dimension: Med_dot_Village {   type: yesno   sql: ${TABLE}."Med. Village";; }
   dimension: Medicredit_Inc {   type: yesno   sql: ${TABLE}."Medicredit Inc";; }
   dimension: Meijer {     type: yesno     sql: ${TABLE}."Meijer";;   }
   dimension: Mellow_Mood {   type: yesno   sql: ${TABLE}."Mellow Mood";; }
@@ -862,7 +862,7 @@ view: usermerchantflag {
   dimension: Microsoft {     type: yesno     sql: ${TABLE}."Microsoft";;   }
   dimension: Microsoft_Ultimate {   type: yesno   sql: ${TABLE}."Microsoft Ultimate";; }
   dimension: Microsoft_Ultimate_1_Mo {   type: yesno   sql: ${TABLE}."Microsoft Ultimate 1 Mo";; }
-  dimension: Microsoft_Ultimate_Msbill.info_Wa {   type: yesno   sql: ${TABLE}."Microsoft Ultimate Msbill.info Wa";; }
+  dimension: Microsoft_Ultimate_Msbill_dot_info_Wa {   type: yesno   sql: ${TABLE}."Microsoft Ultimate Msbill.info Wa";; }
   dimension: Microsoft_Xb {   type: yesno   sql: ${TABLE}."Microsoft Xb";; }
   dimension: Mike_Carlson_Motor_Co {   type: yesno   sql: ${TABLE}."Mike Carlson Motor Co";; }
   dimension: Miller_S_Ale_House {   type: yesno   sql: ${TABLE}."Miller S Ale House";; }
@@ -936,7 +936,7 @@ view: usermerchantflag {
   dimension: Outback_Steakhouse {   type: yesno   sql: ${TABLE}."Outback Steakhouse";; }
   dimension: Outgoing {   type: yesno   sql: ${TABLE}."Outgoing";; }
   dimension: Owings_Auto {   type: yesno   sql: ${TABLE}."Owings Auto";; }
-  dimension: P.F_Changs {   type: yesno   sql: ${TABLE}."P.F. Chang''s";; }
+  dimension: P_dot_F_Changs {   type: yesno   sql: ${TABLE}."P.F. Chang''s";; }
   dimension: Pacific_Ride_Tesla {   type: yesno   sql: ${TABLE}."Pacific Ride Tesla";; }
   dimension: Pacific_Sunwear {   type: yesno   sql: ${TABLE}."Pacific Sunwear";; }
   dimension: Pai_Iso {   type: yesno   sql: ${TABLE}."Pai Iso";; }
@@ -959,7 +959,7 @@ view: usermerchantflag {
   dimension: Patient_Pay_Serv_Pos {   type: yesno   sql: ${TABLE}."Patient Pay Serv Pos";; }
   dimension: PayByPhone {   type: yesno   sql: ${TABLE}."PayByPhone";; }
   dimension: Pay_Fairfield_Townhouse {   type: yesno   sql: ${TABLE}."Pay Fairfield Townhouse";; }
-  dimension: Pay_G.co_walleth {   type: yesno   sql: ${TABLE}."Pay G.co/walleth#," OR ${TABLE}."Pay G.co/walleth#" OR ${TABLE}."G.co/walleth#ca";; }
+  dimension: Pay_G_dot_co_walleth {   type: yesno   sql: ${TABLE}."Pay G.co/walleth#," OR ${TABLE}."Pay G.co/walleth#" OR ${TABLE}."G.co/walleth#ca";; }
   dimension: Pay_G_co_helppay {   type: yesno   sql: ${TABLE}."Pay G.co/helppay#";; }
   dimension: Pay_Less {   type: yesno   sql: ${TABLE}."Pay Less";; }
   dimension: Pay_Portofino_Valenc {   type: yesno   sql: ${TABLE}."Pay Portofino Valenc";; }
@@ -1035,7 +1035,7 @@ view: usermerchantflag {
   dimension: Quadpay_Anywh {   type: yesno   sql: ${TABLE}."Quadpay Anywh";; }
   dimension: Quadpay_Fas {   type: yesno   sql: ${TABLE}."Quadpay Fas";; }
   dimension: Quadpay_Fashion {   type: yesno   sql: ${TABLE}."Quadpay Fashion";; }
-  dimension: Quadpay_Fashion_N_Httpswww.quad_Ny {   type: yesno   sql: ${TABLE}."Quadpay Fashion N Httpswww.quad Ny";; }
+  dimension: Quadpay_Fashion_N_Httpswww_dot_quad_Ny {   type: yesno   sql: ${TABLE}."Quadpay Fashion N Httpswww.quad Ny";; }
   dimension: Quadpay_Fashion_Nova {   type: yesno   sql: ${TABLE}."Quadpay Fashion Nova";; }
   dimension: Quality_Inn {   type: yesno   sql: ${TABLE}."Quality Inn";; }
   dimension: Quality_Inns {   type: yesno   sql: ${TABLE}."Quality Inns";; }
@@ -1043,7 +1043,7 @@ view: usermerchantflag {
   dimension: QuickChek {   type: yesno   sql: ${TABLE}."QuickChek";; }
   dimension: Quick_Mart {   type: yesno   sql: ${TABLE}."Quick Mart";; }
   dimension: Quick_Stop {   type: yesno   sql: ${TABLE}."Quick Stop";; }
-  dimension: Quickbit.eu {   type: yesno   sql: ${TABLE}."Quickbit.eu";; }
+  dimension: Quickbit_dot_eu {   type: yesno   sql: ${TABLE}."Quickbit.eu";; }
   dimension: Quik_Stop {   type: yesno   sql: ${TABLE}."Quik Stop";; }
   dimension: Qvc {   type: yesno   sql: ${TABLE}."Qvc";; }
   dimension: Qvc_Inc {   type: yesno   sql: ${TABLE}."Qvc Inc";; }
@@ -1199,7 +1199,7 @@ view: usermerchantflag {
   dimension: Starbucks {     type: yesno     sql: ${TABLE}."Starbucks";;   }
   dimension: Starbucks_Store {   type: yesno   sql: ${TABLE}."Starbucks Store";; }
   dimension: State_Street {   type: yesno   sql: ${TABLE}."State Street";; }
-  dimension: Stater_Bros._Markets {   type: yesno   sql: ${TABLE}."Stater Bros. Markets";; }
+  dimension: Stater_Bros_dot_Markets {   type: yesno   sql: ${TABLE}."Stater Bros. Markets";; }
   dimension: Staterbros {   type: yesno   sql: ${TABLE}."Staterbros";; }
   dimension: Staybridge_Suites {   type: yesno   sql: ${TABLE}."Staybridge Suites";; }
   dimension: Steak_n_Shake {   type: yesno   sql: ${TABLE}."Steak ''n Shake";; }
@@ -1313,8 +1313,8 @@ view: usermerchantflag {
   dimension: Turkey_Hill {   type: yesno   sql: ${TABLE}."Turkey Hill";; }
   dimension: Turner_Acceptance_ {   type: yesno   sql: ${TABLE}."Turner Acceptance --";; }
   dimension: Turo_Inc {   type: yesno   sql: ${TABLE}."Turo Inc.";; }
-  dimension: Turo_Inc._Trip {   type: yesno   sql: ${TABLE}."Turo Inc. Trip";; }
-  dimension: Turo_Inc._Trip_S {   type: yesno   sql: ${TABLE}."Turo Inc. Trip S";; }
+  dimension: Turo_Inc_dot_Trip {   type: yesno   sql: ${TABLE}."Turo Inc. Trip";; }
+  dimension: Turo_Inc_dot_Trip_S {   type: yesno   sql: ${TABLE}."Turo Inc. Trip S";; }
   dimension: Tutor_Time {   type: yesno   sql: ${TABLE}."Tutor Time";; }
   dimension: Tuttle_Road {   type: yesno   sql: ${TABLE}."Tuttle Road";; }
   dimension: Tvg_online {   type: yesno   sql: ${TABLE}."Tvg-online";; }
@@ -1326,9 +1326,9 @@ view: usermerchantflag {
   dimension: Uber_Eats {   type: yesno   sql: ${TABLE}."Uber Eats";; }
   dimension: Uberat_eats {   type: yesno   sql: ${TABLE}."Uberat_eats";; }
   dimension: Ubr_Pending {   type: yesno   sql: ${TABLE}."Ubr Pending";; }
-  dimension: Ubr_Pending.ub {   type: yesno   sql: ${TABLE}."Ubr Pending.ub";; }
-  dimension: Ubr_Pending.ube {   type: yesno   sql: ${TABLE}."Ubr Pending.ube";; }
-  dimension: Ubr_Pending.uber {     type: yesno     sql: ${TABLE}."Ubr Pending.uber" OR ${TABLE}."Ubr Pending.uber." OR ${TABLE}."Ubr Pending.uber.co" OR ${TABLE}."Ubr Pending.uber.com";;   }
+  dimension: Ubr_Pending_dot_ub {   type: yesno   sql: ${TABLE}."Ubr Pending.ub";; }
+  dimension: Ubr_Pending_dot_ube {   type: yesno   sql: ${TABLE}."Ubr Pending.ube";; }
+  dimension: Ubr_Pending_dot_uber {     type: yesno     sql: ${TABLE}."Ubr Pending.uber" OR ${TABLE}."Ubr Pending.uber." OR ${TABLE}."Ubr Pending.uber.co" OR ${TABLE}."Ubr Pending.uber.com";;   }
   dimension: Ulta {   type: yesno   sql: ${TABLE}."Ulta";; }
   dimension: UniBet {   type: yesno   sql: ${TABLE}."UniBet";; }
   dimension: United {     type: yesno     sql: ${TABLE}."United";;   }
@@ -1366,7 +1366,7 @@ view: usermerchantflag {
   dimension: Victorias_Sec {   type: yesno   sql: ${TABLE}."Victoria''s Sec";; }
   dimension: Victorias_Secret {   type: yesno   sql: ${TABLE}."Victoria''s Secret";; }
   dimension: Victoriassecret {   type: yesno   sql: ${TABLE}."Victoriassecret";; }
-  dimension: Victoriassecret.co {   type: yesno   sql: ${TABLE}."Victoriassecret.co";; }
+  dimension: Victoriassecret_dot_co {   type: yesno   sql: ${TABLE}."Victoriassecret.co";; }
   dimension: Village {   type: yesno   sql: ${TABLE}."Village";; }
   dimension: Village_Pantry {   type: yesno   sql: ${TABLE}."Village Pantry";; }
   dimension: Villages {   type: yesno   sql: ${TABLE}."Villages";; }
