@@ -192,6 +192,15 @@ view: lookeruserpii {
     sql: ${TABLE}."annualincome" ;;
   }
 
+  dimension: group {
+    type: string
+    sql: CASE
+      WHEN ${TABLE}."prequalisprequalified" IS TRUE AND ${TABLE}."prequalispointsredeemable" IS TRUE THEN 'A'
+      WHEN ${TABLE}."prequalisprequalified" IS FALSE AND ${TABLE}."prequalispointsredeemable" IS TRUE THEN 'B'
+      WHEN ${TABLE}."prequalisprequalified" IS FALSE AND ${TABLE}."prequalispointsredeemable" IS FALSE THEN 'C'
+      ELSE NULL END;;
+  }
+
   measure: count {
     type: count
     drill_fields: [firstname, lastname, employername]
