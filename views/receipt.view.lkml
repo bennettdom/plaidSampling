@@ -16,24 +16,25 @@ view: receipt {
     ]
     sql:
       SELECT
-        CONCAT(COALESCE(rp.userid, wri.userid), '-', COALESCE(rp.plaidtransactionid, wri.transactionid)) as primarykey,
-        COALESCE(rp.userid, wri.userid) as userid,
+        CONCAT(COALESCE(rp.userid, rpn.userid, wri.userid), '-', COALESCE(rp.plaidtransactionid, rpn.blinkreceiptid, wri.transactionid)) as primarykey,
+        COALESCE(rp.userid, rpn.userid, wri.userid) as userid,
         COALESCE(rp.plaidtransactionid, wri.transactionid) as transactionid,
-        COALESCE(rp.upc, wri.upc) as upc,
-        rp.productname,
-        COALESCE(rh.merchantname, 'Walmart') as merchantname,
-        COALESCE(rp.productdescription, wri.description) as description,
-        COALESCE(rp.quantity, wri.quantity) as quantity,
-        COALESCE(rp.unitprice, wri.price) as unitprice,
-        COALESCE(rp.productimageurl, wri.imageurl) as imageurl,
-        rp.categorylevel1,
-        rp.categorylevel2,
-        rp.categorylevel3,
-        rp.categorylevel4,
-        rp.categorylevel5,
-        COALESCE(rh.subtotalvalue, wr.subtotal) as receiptsubtotal,
-        COALESCE(rh.taxes, wr.taxtotal) as receipttaxtotal,
-        COALESCE(rh.total, wr.totalamount) as receipttotal
+        COALESCE(rp.upc, rpn.upc, wri.upc) as upc,
+        COALESCE(rp.productname, rpn.productname) as productname,
+        COALESCE(rh.merchantname, rhn.merchantname, 'Walmart') as merchantname,
+        COALESCE(rp.productdescription, rpn.productdescription, wri.description) as description,
+        COALESCE(rp.quantity, rpn.quantity, wri.quantity) as quantity,
+        COALESCE(rp.unitprice, rpn.unitprice, wri.price) as unitprice,
+        COALESCE(rp.productimageurl, rpn.productimageurl, wri.imageurl) as imageurl,
+        COALESCE(rp.categorylevel1, rpn.categorylevel1) as categorylevel1,
+        COALESCE(rp.categorylevel2, rpn.categorylevel2) as categorylevel2,
+        COALESCE(rp.categorylevel3, rpn.categorylevel3) as categorylevel3,
+        COALESCE(rp.categorylevel4, rpn.categorylevel4) as categorylevel4,
+        COALESCE(rp.categorylevel5, rpn.categorylevel5) as categorylevel5,
+        COALESCE(rh.subtotalvalue, rhn.subtotalvalue, wr.subtotal) as receiptsubtotal,
+        COALESCE(rh.taxes, rhn.taxes, wr.taxtotal) as receipttaxtotal,
+        COALESCE(rh.total, rhn.total, wr.totalamount) as receipttotal,
+        COALESCE(rp.plaidtransactionid, wri.transactionid, '') != '' as istiedtotransaction
 
       FROM receiptproducts rp
       LEFT JOIN receiptheader rh ON rp.userid=rh.userid AND rp.plaidtransactionid=rh.plaidtransactionid
@@ -41,7 +42,10 @@ view: receipt {
       FULL JOIN walmartreceiptitem wri ON rp.userid=wri.userid AND rp.plaidtransactionid=wri.transactionid
       LEFT JOIN walmartreceipt wr ON wri.userid=wr.userid AND wri.transactionid=wr.transactionid
 
-      INNER JOIN lookeruserpii up ON COALESCE(rp.userid, wri.userid)=up.userid
+      FULL JOIN receiptproductsnotransaction rpn ON 1=0
+      LEFT JOIN receiptheadernotransaction rhn ON rhn.userid=rpn.userid AND rhn.blinkreceiptid=rpn.blinkreceiptid
+
+      INNER JOIN lookeruserpii up ON COALESCE(rp.userid, wri.userid, rpn.userid)=up.userid
       ;;
   }
 
@@ -139,6 +143,11 @@ view: receipt {
   dimension: receipttotal {
     type: number
     sql: ${TABLE}."receipttotal" ;;
+  }
+
+  dimension: istiedtotransaction {
+    type: number
+    sql: ${TABLE}."istiedtotransaction" ;;
   }
 
   measure: count {
