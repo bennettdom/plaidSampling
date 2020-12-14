@@ -146,7 +146,7 @@ view: receipt {
   }
 
   dimension: istiedtotransaction {
-    type: number
+    type: yesno
     sql: ${TABLE}."istiedtotransaction" ;;
   }
 
