@@ -34,7 +34,8 @@ view: receipt {
         COALESCE(rh.subtotalvalue, rhn.subtotalvalue, wr.subtotal) as receiptsubtotal,
         COALESCE(rh.taxes, rhn.taxes, wr.taxtotal) as receipttaxtotal,
         COALESCE(rh.total, rhn.total, wr.totalamount) as receipttotal,
-        COALESCE(rp.plaidtransactionid, wri.transactionid, '') != '' as istiedtotransaction
+        COALESCE(rp.plaidtransactionid, wri.transactionid, '') != '' as istiedtotransaction,
+        COALESCE(rh.receiptdate, rhn.receiptdate, TO_CHAR(timestamp 'epoch' + wr.timestamp * interval '1 ms', 'MM/DD/YYYY')) as date
 
       FROM receiptproducts rp
       LEFT JOIN receiptheader rh ON rp.userid=rh.userid AND rp.plaidtransactionid=rh.plaidtransactionid
@@ -148,6 +149,27 @@ view: receipt {
   dimension: istiedtotransaction {
     type: yesno
     sql: ${TABLE}."istiedtotransaction" ;;
+  }
+
+  dimension: date {
+    hidden: yes
+    type:  string
+    sql:  ${TABLE}."date" ;;
+  }
+
+  dimension_group: date {
+    timeframes: [
+      raw,
+      date,
+      month,
+      month_name,
+      year,
+      week,
+      week_of_year,
+      day_of_week
+    ]
+    type: time
+    sql: to_date(${date},'MM/DD/YYYY') ;;
   }
 
   measure: count {
