@@ -21,6 +21,10 @@ explore: lookeruserpii {
     sql_on: ${lookeruserpii.userid} = ${lookerplaidtransaction.userid} ;;
     relationship: one_to_many
   }
+  join: userquestionanswerlog {
+    sql_on:  ${lookeruserpii.userid} = ${userquestionanswerlog.userid} ;;
+    relationship: one_to_many
+  }
 }
 
 explore: receiptlookeruserpii {
@@ -33,6 +37,10 @@ explore: receiptlookeruserpii {
   join: receipt {
     type:  inner
     sql_on: ${receiptlookeruserpii.userid} = ${receipt.userid} ;;
+    relationship: one_to_many
+  }
+  join: userquestionanswerlog {
+    sql_on:  ${receiptlookeruserpii.userid} = ${userquestionanswerlog.userid} ;;
     relationship: one_to_many
   }
 }
