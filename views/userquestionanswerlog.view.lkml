@@ -1,5 +1,17 @@
 view: userquestionanswerlog {
-  sql_table_name: public.userquestionanswerlog ;;
+  derived_table: {
+    sql:
+      SELECT
+        CONCAT(ul.userid,'-',ul.questionid,'-',ul.answerid),
+        ul.userid,
+        ul.freeformanswer,
+        a.answertext,
+        q.questiontext,
+        q.questionemoji
+      FROM userquestionanswerlog ul
+      INNER JOIN questions q ON ul.questionid = q.questionid
+      INNER JOIN answers a ON q.questionid = a.questionid ;;
+  }
 
   dimension: primarykey {
     type: string
@@ -19,13 +31,18 @@ view: userquestionanswerlog {
     sql: ${TABLE}."freeformanswer" ;;
   }
 
-  dimension: questionid {
+  dimension: questiontext {
     type: string
-    sql: ${TABLE}."questionid" ;;
+    sql: ${TABLE}."questiontext" ;;
   }
 
-  dimension: answerid {
+  dimension: questionemoji {
     type: string
-    sql: ${TABLE}."answerid" ;;
+    sql: ${TABLE}."questionemoji" ;;
+  }
+
+  dimension: answertext {
+    type: string
+    sql: ${TABLE}."answertext" ;;
   }
 }
