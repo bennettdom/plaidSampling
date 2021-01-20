@@ -10,7 +10,7 @@ view: userquestionanswerlog {
         q.questionemoji
       FROM userquestionanswerlog ul
       INNER JOIN questions q ON ul.questionid = q.questionid
-      INNER JOIN answers a ON q.questionid = a.questionid ;;
+      INNER JOIN answers a ON ul.questionid = a.questionid AND ul.answerid=a.answerid;;
   }
 
   dimension: primarykey {
