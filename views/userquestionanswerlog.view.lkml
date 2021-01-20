@@ -2,7 +2,7 @@ view: userquestionanswerlog {
   derived_table: {
     sql:
       SELECT
-        CONCAT(ul.userid,'-',ul.questionid,'-',ul.answerid),
+        CONCAT(ul.userid,'-',ul.questionid,'-',ul.answerid) as primarykey,
         ul.userid,
         ul.freeformanswer,
         a.answertext,
@@ -15,7 +15,7 @@ view: userquestionanswerlog {
 
   dimension: primarykey {
     type: string
-    sql:  CONCAT(${TABLE}."userid","-",${TABLE}."questionid","-",${TABLE}."answerid") ;;
+    sql:  ${TABLE}."primarykey" ;;
     primary_key: yes
     hidden: yes
   }
