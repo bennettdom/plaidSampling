@@ -40,4 +40,5 @@ explore: lookeruserpiireceipts {
     sql_on: ${lookeruserpiireceipts.userid} = ${scannedreceipt.userid} ;;
     relationship: one_to_many
   }
+
 }
