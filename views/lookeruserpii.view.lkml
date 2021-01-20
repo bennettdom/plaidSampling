@@ -169,11 +169,36 @@ view: lookeruserpii {
     type: string
     sql: ${TABLE}."userid" ;;
     hidden: yes
+    primary_key: yes
   }
 
   dimension: zip {
     type: zipcode
     sql: ${TABLE}."zip" ;;
+  }
+
+  dimension: gender {
+    type: zipcode
+    sql: ${TABLE}."gender" ;;
+  }
+
+  dimension: monthlyincome {
+    type: number
+    sql: ${TABLE}."monthlyincome" ;;
+  }
+
+  dimension: annualincome {
+    type: number
+    sql: ${TABLE}."annualincome" ;;
+  }
+
+  dimension: group {
+    type: string
+    sql: CASE
+      WHEN ${TABLE}."prequalisprequalified" IS TRUE AND ${TABLE}."prequalispointsredeemable" IS TRUE THEN 'A'
+      WHEN ${TABLE}."prequalisprequalified" IS FALSE AND ${TABLE}."prequalispointsredeemable" IS TRUE THEN 'B'
+      WHEN ${TABLE}."prequalisprequalified" IS FALSE AND ${TABLE}."prequalispointsredeemable" IS FALSE THEN 'C'
+      ELSE NULL END;;
   }
 
   measure: count {
