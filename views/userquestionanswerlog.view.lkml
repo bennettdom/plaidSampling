@@ -45,4 +45,8 @@ view: userquestionanswerlog {
     type: string
     sql: ${TABLE}."answertext" ;;
   }
+
+  measure: count {
+    type: count
+    }
 }
