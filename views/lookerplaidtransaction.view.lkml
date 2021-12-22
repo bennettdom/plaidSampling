@@ -3,7 +3,7 @@ view: lookerplaidtransaction {
 
   dimension: primary_key {
     primary_key: yes
-    sql: CONCAT(${TABLE}."userid", '-', ${TABLE}."accountid", '-', ${TABLE}."transactionid") ;;
+    sql: CONCAT(${TABLE}."accountid", '-', ${TABLE}."transactionid") ;;
     hidden:  yes
   }
 
