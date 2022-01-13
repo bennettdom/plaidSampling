@@ -4,12 +4,12 @@ view: mg_retail_category {
   dimension: itemcategory {
     type: string
     sql: ${TABLE}."itemcategory" ;;
-    drill_fields: [itemsubcategory]
   }
 
   dimension: itemcategorydrill {
     type: string
     sql: ${TABLE}."itemcategory" ;;
+    drill_fields: [itemsubcategory]
   }
 
   dimension: itemsubcategory {
