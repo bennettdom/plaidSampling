@@ -19,6 +19,11 @@ view: mg_retail_category {
   dimension: totalitems {
     type: number
     sql: ${TABLE}."totalitems" ;;
+    drill_fields: [user_details*]
+  }
+
+  set: user_details {
+    fields: [itemsubcategory,totalsubitems,totalsubspend,totalsubtransactions]
   }
 
   dimension: totalspend {
