@@ -6,10 +6,6 @@ view: mg_retail_category {
     sql: ${TABLE}."itemcategory" ;;
   }
 
-  dimension: itemcategorydrill {
-    type: string
-    sql: ${TABLE}."itemcategory" ;;
-  }
 
   dimension: itemsubcategory {
     type: string
@@ -19,11 +15,12 @@ view: mg_retail_category {
   dimension: totalitems {
     type: number
     sql: ${TABLE}."totalitems" ;;
-    drill_fields: [user_details*]
   }
 
-  set: user_details {
-    fields: [itemsubcategory,totalsubitems,totalsubspend,totalsubtransactions]
+  measure: total_items {
+    type: average
+    sql: ${TABLE} ;;
+    drill_fields: [itemsubcategory, totalsubitems, totalsubitems, totalsubtransactions]
   }
 
   dimension: totalspend {
