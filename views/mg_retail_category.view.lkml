@@ -9,11 +9,6 @@ view: mg_retail_category {
   dimension: itemcategorydrill {
     type: string
     sql: ${TABLE}."itemcategory" ;;
-    drill_fields: [categorydetails*]
-  }
-
-  set: categorydetails {
-    fields: [itemsubcategory, totalsubitems, totalsubspend, totalsubtransactions]
   }
 
   dimension: itemsubcategory {
