@@ -48,7 +48,7 @@ view: mg_retail_category {
   }
   measure: total_items {
     type: average
-    sql: ${TABLE} ;;
+    sql: ${TABLE}."totalitems" ;;
     drill_fields: [itemsubcategory, totalsubitems, totalsubspend, totalsubtransactions]
   }
 }
