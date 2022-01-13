@@ -17,12 +17,6 @@ view: mg_retail_category {
     sql: ${TABLE}."totalitems" ;;
   }
 
-  measure: total_items {
-    type: average
-    sql: ${TABLE} ;;
-    drill_fields: [itemsubcategory, totalsubitems, totalsubitems, totalsubtransactions]
-  }
-
   dimension: totalspend {
     type: number
     sql: ${TABLE}."totalspend" ;;
@@ -50,6 +44,11 @@ view: mg_retail_category {
 
   measure: count {
     type: count
-    drill_fields: []
+    drill_fields: [totalitems]
+  }
+  measure: total_items {
+    type: average
+    sql: ${TABLE} ;;
+    drill_fields: [itemsubcategory, totalsubitems, totalsubspend, totalsubtransactions]
   }
 }
