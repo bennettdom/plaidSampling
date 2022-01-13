@@ -44,7 +44,7 @@ view: mg_retail_category {
 
   measure: count {
     type: count
-    drill_fields: [totalitems]
+    drill_fields: [total_items]
   }
   measure: total_items {
     type: average
