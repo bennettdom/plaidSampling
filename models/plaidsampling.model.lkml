@@ -45,3 +45,7 @@ explore: receiptlookeruserpii {
   }
 
 }
+
+explore: mg_retail_category {}
+
+explore: mg_retail_merchant_category {}
